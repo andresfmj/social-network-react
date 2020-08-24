@@ -5,4 +5,19 @@ body, html {
 	font-family: $default-family-font;
 	font-size: $font-small;
 	font-weight: $font-small-weight;
+	background-color: $bg-color;
+}
+
+.brand-name {
+	font-size: 2.1rem;
+	margin: 0px .8rem;
+}
+
+a {
+	text-decoration: none;
+	color: $text-links;
+	font-size: 1.2rem;
+	&:hover {
+		color: $text-links-hover;
+	}
 }

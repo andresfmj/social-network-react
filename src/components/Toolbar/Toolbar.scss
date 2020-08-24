@@ -1,0 +1,21 @@
+@import '../../styles/shared';
+
+.Toolbar {
+    padding: 15px 0px;
+    background: linear-gradient(to right,  $secondary-color 1%,$primary-color 100%);
+    color: $primary-color;
+
+    .Toolbar__container {
+        display: flex;
+        align-items: center;
+
+        header {
+            flex: 1;
+        }
+
+        .Toolbar__menu {
+            list-style-type: none;
+            margin: 0px .8rem;
+        }
+    }
+}
