@@ -1,0 +1,30 @@
+@import '../../styles/shared';
+
+.Post-item {
+    border-radius: .6rem;
+    background-color: $secondary-color;
+    margin: .6rem;
+    padding: .8rem;
+    header {
+        margin: .4rem 0;
+    }
+    .Post-item-content {
+        margin: 0;
+        padding: 0;
+        .Post-item-hashtags {
+            padding: .4rem 0rem;
+            ul {
+                display: flex;
+                justify-content: center;
+                li {
+                    display: inline-block;
+                    margin: 0px 6px;
+                    padding: .3rem .5rem;
+                    border-radius: .8rem;
+                    background-color: $primary-color;
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}
