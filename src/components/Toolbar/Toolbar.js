@@ -10,7 +10,7 @@ function Toolbar(props) {
                     <h2 className="brand-name">Social Network</h2>
                 </header>
                 <ul className="Toolbar__menu">
-                    <li><a href="#">Posts</a></li>
+                    <li><a href="/posts">Posts</a></li>
                 </ul>
             </div>
         </nav>
