@@ -9,13 +9,17 @@ import { API_URL } from '../../helpers/constants';
 
 function PostItem({ id, author, image, tags, content, link, likes, publishDate }) {
     const [toggleModal, setToggleModal] = useState(false)
+    const [toggleProfileModal, setToggleProfileModal] = useState(false)
     const [comments, setComments] = useState([])
     const [loadingComments, setLoadingComments] = useState(false)
     const [errorComments, setErrorComments] = useState('')
 
-    const toggleModalHandler = () => {
-        console.log('toggle modal')
-        setToggleModal(!toggleModal)
+    const toggleModalHandler = (label) => {
+        if (label === 'profile') {
+            setToggleProfileModal(!toggleProfileModal)
+        } else {
+            setToggleModal(!toggleModal)
+        }
     }
 
     const fetchComments = async () => {
@@ -37,6 +41,10 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
         }
     }
 
+    const profileClickedHandler = () => {
+        setToggleProfileModal(!toggleProfileModal)
+    }
+
     useEffect(() => {
         fetchComments()
     }, [])
@@ -46,7 +54,7 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
         <div className="Post-item">
             <header>
                 <h2>
-                    <Link to={`/user/${author.id}/post`}>{`${author.firstName} ${author.lastName}`}</Link>
+                    <a href="#" onClick={profileClickedHandler}>{`${author.firstName} ${author.lastName}`}</a> <span className='text-small text-muted'><Link to={`/user/${author.id}/post`}>ver posts del usuario</Link></span>
                 </h2>
             </header>
             <div className="Post-item-content">
@@ -72,9 +80,9 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
                 <p className='text-right'>{`publicado ${publishDate}`}</p>
             </div>
             <div className="Post-item-actions">
-                <button onClick={toggleModalHandler}>Mostrar comentarios</button> <span>{comments.length > 0 ? `${comments.length} comentario(s)` : ''}</span>
+                <button onClick={() => toggleModalHandler('comments')}>Mostrar comentarios</button> <span>{comments.length > 0 ? `${comments.length} comentario(s)` : ''}</span>
             </div>
-            <Modal modalIsOpen={toggleModal} toggleModal={toggleModalHandler}>
+            <Modal modalIsOpen={toggleModal} toggleModal={() => toggleModalHandler('comments')}>
                 <h2>Comentarios</h2>
                 {loadingComments && <p>Cargando comentarios...</p>}
                 {errorComments && <p>{errorComments}</p>}
@@ -86,6 +94,10 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
                         </li>
                     ))}
                 </ul>
+            </Modal>
+            <Modal modalIsOpen={toggleProfileModal} toggleModal={() => toggleModalHandler('profile')}>
+                <h2>Profile</h2>
+                
             </Modal>
         </div>
     )
