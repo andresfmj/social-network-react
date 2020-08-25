@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouteMatch, useParams, useHistory } from 'react-router';
 
 import './Posts.scss';
 import PostItem from '../../components/PostItem/PostItem';
@@ -12,9 +13,23 @@ function Posts(props) {
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
+    // let urlMatch = useRouteMatch()
+    let urlParams = useParams()
+    // const history = useHistory()
 
     const fetchData = async () => {
-        const req = await request(`${API_URL}/post?limit=5&page=0`, 'GET', null)
+        setLoading(true)
+        setError('')
+        setPosts([])
+        let uri = ''
+        if (urlParams.authorId) {
+            uri = `/user/${urlParams.authorId}`
+        } else if (urlParams.tagTitle) {
+            uri = `/tag/${decodeURIComponent(urlParams.tagTitle).replace('+', '%20')}`
+        }
+        const urlToFetch = `${API_URL}${uri}/post?limit=5&page=0`;
+        // console.log(urlParams, urlToFetch)
+        const req = await request(urlToFetch, 'GET', null)
         if (req.ok) {
             const response = await req.json()
             const data = response.data
