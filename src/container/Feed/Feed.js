@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link, withRouter, Switch, Route } from 'react-router-dom';
 
 import Posts from '../Posts/Posts';
 import { request } from '../../helpers/request';
 import { API_URL } from '../../helpers/constants';
-import { Link } from 'react-router-dom';
 
 function Feed(props) {
     const [tags, setTags] = useState([])
@@ -59,7 +59,11 @@ function Feed(props) {
             <div style={{ flex: 1 }}>
                 <p></p>
             </div>
-            <Posts />
+            <Switch>
+                <Route exact path='/posts' component={Posts} />
+                <Route exact path='/tag/:tagTitle/post' component={Posts} />
+                <Route exact path='/user/:authorId/post' component={Posts} />
+            </Switch>
             <div className="Aside" style={{ flex: 1 }}>
                 <div className="Aside__tags">
                     <h2>Tags</h2>
@@ -81,4 +85,4 @@ function Feed(props) {
     )
 }
 
-export default Feed;
+export default withRouter(Feed);

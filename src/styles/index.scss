@@ -25,6 +25,13 @@ body, html {
 	text-align: right;
 }
 
+.text-small {
+	font-size: .9rem;
+}
+.text-muted {
+	font-weight: $font-small-weight;
+}
+
 a {
 	text-decoration: none;
 	color: $text-links;

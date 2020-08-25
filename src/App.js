@@ -12,8 +12,9 @@ function App() {
 			<Switch>
 				<Route path='/posts' component={Feed} />
 				<Route path='/post/:id' render={() => <h2>Full Post</h2>} />
-				<Route exact path='/user/:authorId/post' render={() => <h2>User's Posts</h2>} />
-				<Route exact path='/tag/:tagTitle/post' render={() => <h2>Tag's Posts</h2>} />
+				<Route exact path='/tag/:tagTitle/post' component={Feed} />
+                <Route exact path='/user/:authorId/post' component={Feed} />
+				<Route render={() => <h3>404 Recurso no encontrado</h3>} />
 				<Redirect from='/' to='/posts' />
 			</Switch>
 		</Layout>
