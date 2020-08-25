@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import './PostItem.scss';
 
@@ -37,27 +38,28 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
     }
 
     useEffect(() => {
-        if (toggleModal) {
-            fetchComments()
-        }
-
-    }, [toggleModal])
+        fetchComments()
+    }, [])
 
 
     return (
         <div className="Post-item">
             <header>
                 <h2>
-                    <a href={`/user/${author.id}/post`}>{`${author.firstName} ${author.lastName}`}</a>
+                    <Link to={`/user/${author.id}/post`}>{`${author.firstName} ${author.lastName}`}</Link>
                 </h2>
             </header>
             <div className="Post-item-content">
-                <img className='img-rounded' src={image} alt="" />
+                <Link to={`/post/${id}`}>
+                    <img className='img-rounded' src={image} alt="" />
+                </Link>
                 <div className="Post-item-hashtags">
                     <ul>
                         {
                             tags && tags.length > 0 && tags.map((t, _i) => (
-                                <li key={_i}><a href={encodeURIComponent(`/tag/${t}/post`).replace('%20', '+')}>{`#${t}`}</a></li>
+                                <li key={_i}>
+                                    <Link to={`/tag/${encodeURIComponent(t).replace('%20', '+')}/post`}>{`#${t}`}</Link>
+                                </li>
                             ))
                         }
                     </ul>
@@ -66,15 +68,15 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
                 <p className='Post-item-link'><a href={link}>{link}</a></p>
             </div>
             <div className="Post-item-stats">
-                <p className='text-center'>(icon) {`${likes} likes`}</p>
-                <p className='text-center'>{`published at ${publishDate}`}</p>
+                <p className='text-right'>💙 {`${likes} me gusta`}</p>
+                <p className='text-right'>{`publicado ${publishDate}`}</p>
             </div>
             <div className="Post-item-actions">
-                <p><button href={`/post/${id}/comments`} onClick={toggleModalHandler}>Show Comments</button></p>
+                <button onClick={toggleModalHandler}>Mostrar comentarios</button> <span>{comments.length > 0 ? `${comments.length} comentario(s)` : ''}</span>
             </div>
             <Modal modalIsOpen={toggleModal} toggleModal={toggleModalHandler}>
-                <h2>Comments</h2>
-                {loadingComments && <p>Loading comments...</p>}
+                <h2>Comentarios</h2>
+                {loadingComments && <p>Cargando comentarios...</p>}
                 {errorComments && <p>{errorComments}</p>}
                 <ul className='Post-comments'>
                     {comments && comments.map(i => (
