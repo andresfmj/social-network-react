@@ -14,8 +14,8 @@ function App() {
 				<Route path='/post/:id' render={() => <h2>Full Post</h2>} />
 				<Route exact path='/tag/:tagTitle/post' component={Feed} />
                 <Route exact path='/user/:authorId/post' component={Feed} />
-				<Route render={() => <h3>404 Recurso no encontrado</h3>} />
 				<Redirect from='/' to='/posts' />
+				<Route render={() => <h3>404 Recurso no encontrado</h3>} />
 			</Switch>
 		</Layout>
 	);
