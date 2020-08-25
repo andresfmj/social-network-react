@@ -36,6 +36,14 @@
                 }
             }
         }
+        .Post-item-link {
+            a {
+                color: $primary-color;
+                &:hover {
+                    color: $primary-text-color;
+                }
+            }
+        }
     }
     .Post-item-stats {
         margin: .6rem 0rem;
@@ -49,6 +57,19 @@
             &:hover {
                 color: $primary-text-color
             }
+        }
+    }
+}
+
+.Post-comments {
+    margin: .6rem 0rem;
+    li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        p {
+            margin: .6rem 0rem;
         }
     }
 }
