@@ -3,8 +3,23 @@
 .Post-item {
     border-radius: .3rem;
     background-color: $secondary-color;
-    margin: .6rem;
+    margin: 0 .8rem .8rem 0;
     padding: .8rem;
+    width: 40%;
+    flex: auto;
+
+    box-shadow: 0px 0px 4px 0px rgba(77,77,77,1);
+
+    &:nth-child(4n+1) {
+        width: 20%;
+    }
+    &:nth-child(4n+1):nth-child(2n+2) {
+        width: 25%;
+    }
+    &:nth-child(4n+1):nth-child(2n+3) {
+        width: 30%;
+    }
+
     header {
         margin: .6rem 0rem;
         padding: .2rem 0rem;
