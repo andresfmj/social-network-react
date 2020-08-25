@@ -5,7 +5,7 @@ import './PostItem.scss';
 
 import Modal from '../Modal/Modal';
 import { request } from '../../helpers/request';
-import { API_URL } from '../../helpers/constants';
+import ProfileInfo from '../ProfileInfo/ProfileInfo';
 
 function PostItem({ id, author, image, tags, content, link, likes, publishDate }) {
     const [toggleModal, setToggleModal] = useState(false)
@@ -26,7 +26,7 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
         setLoadingComments(true)
         setErrorComments('')
         setComments([])
-        const response = await request(`${API_URL}/post/${id}/comment`, 'GET', null)
+        const response = await request(`/post/${id}/comment`, 'GET', null)
         const data = await response.json()
         if (response.ok) {
             if (data.data.length > 0) {
@@ -96,8 +96,8 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
                 </ul>
             </Modal>
             <Modal modalIsOpen={toggleProfileModal} toggleModal={() => toggleModalHandler('profile')}>
-                <h2>Profile</h2>
-                
+                <h2>Perfil de Usuario</h2>
+                <ProfileInfo profileUser={author} />
             </Modal>
         </div>
     )
