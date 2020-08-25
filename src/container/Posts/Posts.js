@@ -32,7 +32,7 @@ function Posts(props) {
 
     return (
         <div className="Posts">
-            {loading && <p>Loading posts...</p>}
+            {loading && <p>Obteniendo publicaciones...</p>}
             {error && <p>Error: {error}</p>}
             {posts && posts.map(i => (
                 <PostItem 
