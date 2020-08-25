@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useRouteMatch, useParams, useHistory } from 'react-router';
+import { 
+    // useRouteMatch, 
+    useParams, 
+    // useHistory 
+} from 'react-router';
 
 import './Posts.scss';
 import PostItem from '../../components/PostItem/PostItem';
 
 import { request } from '../../helpers/request';
 
-import { API_URL } from '../../helpers/constants';
 
 
 function Posts(props) {
@@ -27,8 +30,7 @@ function Posts(props) {
         } else if (urlParams.tagTitle) {
             uri = `/tag/${decodeURIComponent(urlParams.tagTitle).replace('+', '%20')}`
         }
-        const urlToFetch = `${API_URL}${uri}/post?limit=5&page=0`;
-        // console.log(urlParams, urlToFetch)
+        const urlToFetch = `${uri}/post?limit=5&page=0`;
         const req = await request(urlToFetch, 'GET', null)
         if (req.ok) {
             const response = await req.json()

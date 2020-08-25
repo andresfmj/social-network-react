@@ -3,7 +3,6 @@ import { Link, withRouter, Switch, Route } from 'react-router-dom';
 
 import Posts from '../Posts/Posts';
 import { request } from '../../helpers/request';
-import { API_URL } from '../../helpers/constants';
 
 function Feed(props) {
     const [tags, setTags] = useState([])
@@ -14,7 +13,7 @@ function Feed(props) {
     const fetchTags = async (pagi) => {
         setLoadingTags(true)
         setErrorTags('')
-        const response = await request(`${API_URL}/tag?limit=25&page=${pagi ? pagi.page : 0}`, 'GET', null)
+        const response = await request(`/tag?limit=25&page=${pagi ? pagi.page : 0}`, 'GET', null)
         if (response.ok) {
             const data = await response.json()
             if (data.data.length > 0) {

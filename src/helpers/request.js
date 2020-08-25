@@ -1,7 +1,7 @@
-import { TOKEN_AUTH } from './constants';
+import { TOKEN_AUTH, API_URL } from './constants';
 
-const request = async (api, method, params) => {
-    const req = await fetch(api, {
+const request = async (uri, method, params) => {
+    const req = await fetch(`${API_URL}${uri}`, {
         method: method,
         headers: {
             'Content-Type': 'application/json',
