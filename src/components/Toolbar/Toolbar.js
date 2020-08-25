@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './Toolbar.scss';
 
@@ -10,7 +11,7 @@ function Toolbar(props) {
                     <h2 className="brand-name">Social Network</h2>
                 </header>
                 <ul className="Toolbar__menu">
-                    <li><a href="/posts">Posts</a></li>
+                    <li><Link to='/posts'>Posts</Link></li>
                 </ul>
             </div>
         </nav>
