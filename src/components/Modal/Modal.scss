@@ -1,0 +1,15 @@
+@import '../../styles/shared';
+
+.Modal {
+    position: fixed;
+    left: 25%;
+    top: 15%;
+	background-color: #ffffff;
+    padding: 1.2rem;
+    width: 50%;
+    height: 65%;
+    overflow-y: scroll;
+    .Modal-inner {
+        margin-bottom: 1.2rem;
+    }
+}
