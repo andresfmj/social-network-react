@@ -37,6 +37,14 @@ body, html {
 	font-weight: $font-small-weight;
 }
 
+.btn {
+	background: none;
+	border: none;
+	font: inherit;
+	color: $primary-color;
+	cursor: pointer;
+}
+
 a {
 	text-decoration: none;
 	color: $text-links;

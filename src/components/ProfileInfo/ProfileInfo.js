@@ -32,23 +32,29 @@ function ProfileInfo({ profileUser }) {
     return (
         <div className="ProfileInfo">
             <div className="ProfileInfo-inner">
-                <div className="Profile-image">
-                    <img className='img-circle' src={profileUser.picture} alt={profileUser.id} />
-                </div>
-                <div className="Profile-description">
-                    <header>
-                        <h2>{`${profileUser.title}. ${profileUser.firstName} ${profileUser.lastName}`}</h2>
-                    </header>
-                    <div className="Profile-content">
-                        <p><span>Gender:</span> {profileUser.gender}</p>
-                        <p><span>Birthdate:</span> {profileUser.dateOfBirth}</p>
-                        <p><span>Register Date:</span> {profileUser.registerDate}</p>
-                        <hr />
-                        <p><span>Email:</span> {profileUser.email}</p>
-                        <p><span>Phone:</span> {profileUser.phone}</p>
-                        <p><span>Address:</span> {`${profileUser.location.street}, ${profileUser.location.city} ${profileUser.location.country}`}</p>
-                    </div>
-                </div>
+                {loading && <p>Loading...</p>}
+                {error && <p>{error}</p>}
+                {profileUser && (
+                    <React.Fragment>
+                        <div className="Profile-image">
+                            <img className='img-circle' src={profileUser.picture} alt={profileUser.id} />
+                        </div>
+                        <div className="Profile-description">
+                            <header>
+                                <h2>{`${profileUser.title}. ${profileUser.firstName} ${profileUser.lastName}`}</h2>
+                            </header>
+                            <div className="Profile-content">
+                                <p><span>Gender:</span> {profileUser.gender}</p>
+                                <p><span>Birthdate:</span> {profileUser.dateOfBirth}</p>
+                                <p><span>Register Date:</span> {profileUser.registerDate}</p>
+                                <hr />
+                                <p><span>Email:</span> {profileUser.email}</p>
+                                <p><span>Phone:</span> {profileUser.phone}</p>
+                                <p><span>Address:</span> {`${profileUser.location.street}, ${profileUser.location.city} ${profileUser.location.country}`}</p>
+                            </div>
+                        </div>
+                    </React.Fragment>
+                )}
             </div>
         </div>
     )

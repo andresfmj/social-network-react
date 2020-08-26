@@ -54,7 +54,7 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
         <div className="Post-item">
             <header>
                 <h2>
-                    <a href="#" onClick={profileClickedHandler}>{`${author.firstName} ${author.lastName}`}</a> <span className='text-small text-muted'><Link to={`/user/${author.id}/post`}>ver posts del usuario</Link></span>
+                    <button className='btn' onClick={profileClickedHandler}>{`${author.firstName} ${author.lastName}`}</button> <span className='text-small text-muted'><Link to={`/user/${author.id}/post`}>ver posts del usuario</Link></span>
                 </h2>
             </header>
             <div className="Post-item-content">
@@ -76,7 +76,7 @@ function PostItem({ id, author, image, tags, content, link, likes, publishDate }
                 <p className='Post-item-link'><a href={link}>{link}</a></p>
             </div>
             <div className="Post-item-stats">
-                <p className='text-right'>💙 {`${likes} me gusta`}</p>
+                <p className='text-right'><span role='img' aria-label='likeIcon'>💙</span> {`${likes} me gusta`}</p>
                 <p className='text-right'>{`publicado ${publishDate}`}</p>
             </div>
             <div className="Post-item-actions">
