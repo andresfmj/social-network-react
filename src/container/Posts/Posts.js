@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-    // useRouteMatch, 
+    useRouteMatch, 
     useParams, 
     // useHistory 
 } from 'react-router';
@@ -21,7 +21,7 @@ function Posts(props) {
     const [token, setToken] = useState(null)
     const [tokenText, setTokenText] = useState('')
 
-    // let urlMatch = useRouteMatch()
+    let urlMatch = useRouteMatch()
     let urlParams = useParams()
     // const history = useHistory()
 
@@ -70,9 +70,8 @@ function Posts(props) {
             modalTokenHandler()
         } else {
             fetchData()
-            localStorage.getItem('token_appId')
         }
-    }, [token])
+    }, [token, urlMatch.path])
 
     return (
         <React.Fragment>

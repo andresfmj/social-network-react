@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter, Switch, Route } from 'react-router-dom';
+import { Link, withRouter, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import Posts from '../Posts/Posts';
 import { request } from '../../helpers/request';
@@ -9,6 +9,8 @@ function Feed(props) {
     const [loadingTags, setLoadingTags] = useState(false)
     const [errorTags, setErrorTags] = useState('')
     const [pagination, setPagination] = useState(null)
+
+    let urlMatch = useRouteMatch()
 
     const fetchTags = async (pagi) => {
         setLoadingTags(true)
@@ -51,7 +53,7 @@ function Feed(props) {
 
     useEffect(() => {
         fetchTags(pagination)
-    }, [])
+    }, [urlMatch.path])
 
     return (
         <React.Fragment>
