@@ -69,7 +69,15 @@ function Posts(props) {
         if (!localStorage.getItem('token_appId')) {
             modalTokenHandler()
         } else {
-            fetchData()
+            const tokenStorage = JSON.parse(localStorage.getItem('token_appId'))
+            const now = new Date()
+            if (now < tokenStorage.expiresIn) {
+                fetchData()
+            } else {
+                localStorage.removeItem('token_appId')
+                console.log('token expired up!')
+                modalTokenHandler()
+            }
         }
     }, [token, urlMatch.path])
 

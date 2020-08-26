@@ -9,8 +9,10 @@ tener instalado previamente node/npm y ejecutar la siguiente instrucción en la 
 $ npm install 
 ```
 
-> Antes de poner el servidor local en marcha, se debe agregar el `app-id` 
-> de <a href="https://dummyapi.io/">DummyAPI</a> en la variable `TOKEN_AUTH` del archivo `src/helpers/constants.js`
+> Antes de consultar la api, aparacerá una ventana modal, 
+> el cual pedirá que se debe agregar el `app-id` 
+> de <a href="https://dummyapi.io/">DummyAPI</a>. Este automaticamente se agrega al 
+> `localStorage` y expira después de 1 hora.
 
 A continuación, se procede a ejecutar el servidor local:
 ```
